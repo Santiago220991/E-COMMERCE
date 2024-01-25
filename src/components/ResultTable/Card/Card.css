@@ -4,17 +4,23 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 20%;
+    height: 24%;
 }
 
 .CardContainer .ProductImageContainer {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+    width: 80%;
+    height: 50%;
+    padding: 10%;
 }
 
 .CardContainer img {
-    width: 50%;
-    aspect-ratio: 4/3;
-    object-fit: contain;
+    display:flex;
+    width: 100%;
+    object-fit: cover;
     mix-blend-mode: color-burn;
+}
+
+.CardContainer .DetailsCardContainer {
+    height: 50%;
 }
