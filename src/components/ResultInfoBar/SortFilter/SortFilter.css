@@ -8,6 +8,7 @@
     border-width: 0;
     background-color: white;
     color: #7E7E7E;
+    cursor: pointer;
 }
 
 .SortFilterContainer #order:focus {
