@@ -4,23 +4,23 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20%;
-    height: 24%;
+    width: 30%;
+    height: 350px;
 }
 
 .CardContainer .ProductImageContainer {
-    width: 80%;
-    height: 50%;
-    padding: 10%;
+    padding: 5%;
 }
 
 .CardContainer img {
-    display:flex;
-    width: 100%;
-    object-fit: cover;
+    display:block;
+    margin-left: 30%;
+    width: 40%;
+    height: 120px;
+    object-position: center;
     mix-blend-mode: color-burn;
 }
 
 .CardContainer .DetailsCardContainer {
-    height: 50%;
+    height: 40%;
 }
