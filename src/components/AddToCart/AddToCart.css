@@ -1,0 +1,33 @@
+.AddToCartContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.AddToCartContainerCounter {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.AddToCartContainer .AddToCartContainerCounter button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.AddToCartContainer button {
+    width: 90px;
+    background-color: rgb(41, 212, 18);
+    padding: 10px 5px 10px 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.AddToCartContainer p {
+    font-size: 20px;
+    color: white;
+    margin: 0px
+}
