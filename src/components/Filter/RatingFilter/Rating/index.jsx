@@ -19,7 +19,6 @@ function Rating ( {stars} ) {
     return (
         <div className='RatingContainer'>
             {fillStars()}
-            <h3>& up</h3>
         </div>
     )
 }

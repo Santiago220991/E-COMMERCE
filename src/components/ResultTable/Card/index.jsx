@@ -3,7 +3,7 @@ import { Detail } from './Detail'
 import { SearchContext } from '../../../contexts/SearchContext';
 import './Card.css'
 
-function Card ({ image, title, price, description }) {
+function Card ({ image, title, price, rate, description }) {
     const {
         setIsOpen,
         setImageProduct,
@@ -28,6 +28,7 @@ function Card ({ image, title, price, description }) {
             <Detail 
                 title = {title}
                 price = {price}
+                rate = {rate}
             />
         </div>
     )

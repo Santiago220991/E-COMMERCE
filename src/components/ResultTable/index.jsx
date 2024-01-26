@@ -23,6 +23,7 @@ function ResultTable () {
                             image = {product.image}
                             title = {product.title}
                             price = {product.price}
+                            rate = {product.rating.rate}
                             description = {product.description}
                         />
                     )
