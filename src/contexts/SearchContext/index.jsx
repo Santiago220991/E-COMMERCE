@@ -1,5 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import { HigherToLower, LowerToHigher, ByName } from "../../utils/sorting";
+import roundRating from "../../utils/rounding"
+
 const SearchContext = createContext();
 
 function SearchProvider({ children }) {
@@ -13,6 +15,7 @@ function SearchProvider({ children }) {
   const [priceProduct, setPriceProduct] = useState("");
   const [descriptionProduct, setDescriptionProduct] = useState("");
   const [categoryOptions, setCategoryOptions] = useState([]);
+  const [rateOption, setRateOption] = useState(5);
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -28,7 +31,6 @@ function SearchProvider({ children }) {
         setProductsInitial(productList);
         setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
       }
     };
     fetchData();
@@ -49,7 +51,9 @@ function SearchProvider({ children }) {
       const categoryCheck =
         categoryOptions.length === 0 ||
         categoryOptions.some((category) => product.category === category);
-      return categoryCheck;
+      const ratingCheck =
+        rateOption === 0 || roundRating(product.rating.rate) <= rateOption;
+      return categoryCheck && ratingCheck;
     });
     setProducts(filteredProducts);
   };
@@ -82,7 +86,7 @@ function SearchProvider({ children }) {
         setCategoryOptions,
         applyFilters,
         rateOption,
-        setRateOptions,
+        setRateOption,
       }}
     >
       {children}

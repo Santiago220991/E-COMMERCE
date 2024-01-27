@@ -6,3 +6,20 @@
 .RatingsContainer {
     margin: 10px 25px;
 }
+
+.RatingsContainer fieldset {
+    border: 0;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.RatingsContainer .RadioBox {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+.RatingsContainer .RadioBox label .RatingContainer{
+    margin: 0;
+}
