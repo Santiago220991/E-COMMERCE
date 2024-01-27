@@ -7,10 +7,13 @@ function SearchProvider({ children }) {
   const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [productsInitial, setProductsInitial] = useState([]);
   const [imageProduct, setImageProduct] = useState("");
   const [titleProduct, setTitleProduct] = useState("");
   const [priceProduct, setPriceProduct] = useState("");
   const [descriptionProduct, setDescriptionProduct] = useState("");
+  const [categoryOptions, setCategoryOptions] = useState([]);
+
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
     const data = await response.json();
@@ -22,6 +25,7 @@ function SearchProvider({ children }) {
       try {
         const productList = await getData();
         setProducts(productList.sort(ByName));
+        setProductsInitial(productList);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -38,6 +42,16 @@ function SearchProvider({ children }) {
     } else if (sortValue === "Price_High") {
       setProducts([...products.sort(HigherToLower)]);
     }
+  };
+
+  const applyFilters = () => {
+    const filteredProducts = productsInitial.filter((product) => {
+      const categoryCheck =
+        categoryOptions.length === 0 ||
+        categoryOptions.some((category) => product.category === category);
+      return categoryCheck;
+    });
+    setProducts(filteredProducts);
   };
 
   const searchedProducts = products.filter((product) => {
@@ -64,6 +78,11 @@ function SearchProvider({ children }) {
         descriptionProduct,
         setDescriptionProduct,
         sortProducts,
+        categoryOptions,
+        setCategoryOptions,
+        applyFilters,
+        rateOption,
+        setRateOptions,
       }}
     >
       {children}
