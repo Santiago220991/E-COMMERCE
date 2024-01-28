@@ -3,13 +3,14 @@ import { useContext } from "react";
 import { SearchContext } from "../../contexts/SearchContext";
 
 const Cart = () => {
-  const { cartProducts } = useContext(SearchContext);
-  console.log(cartProducts)
+  const { cartProducts, addProductToCart, subtotal } =
+    useContext(SearchContext);
+
   return (
     <div className="CartContainer">
       <div className="SubtotalContainer">
         <strong>Subtotal</strong>
-        <p>`${2000}`</p>
+        <p>{subtotal}</p>
         <button>Continue</button>
       </div>
       {cartProducts.map((product, index) => (
@@ -22,11 +23,20 @@ const Cart = () => {
           </div>
           <p>{`$${product.price}`}</p>
           <div className="ProductAddedQuantityController">
-            <button>
+            <button
+              onClick={() =>
+                addProductToCart(product.title, product.quantity - 1)
+              }
+              disabled={product.quantity <= 1}
+            >
               <p>-</p>
             </button>
-            <p>1</p>
-            <button>
+            <p>{product.quantity}</p>
+            <button
+              onClick={() =>
+                addProductToCart(product.title, product.quantity + 1)
+              }
+            >
               <p>+</p>
             </button>
           </div>

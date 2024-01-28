@@ -1,35 +1,47 @@
 import "./AddToCartButton.css";
 import { SearchContext } from "../../contexts/SearchContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const AddToCartButton = () => {
-  const { productsInitial, setCartProducts, cartProducts, titleProduct } =
-    useContext(SearchContext);
+  const {
+    cartProducts,
+    titleProduct,
+    productQuantity,
+    setProductQuantity,
+    addProductToCart,
+  } = useContext(SearchContext);
 
-  const addProductToCart = () => {
-    const alreadyExistInCart = cartProducts.filter((product) =>
-      product.title.includes(titleProduct)
+  useEffect(() => {
+    const selectedProduct = cartProducts.filter(
+      (product) => product.title === titleProduct
     );
-    if (alreadyExistInCart.length===0) {
-      const selectedProduct = productsInitial.filter((product) =>
-        product.title.includes(titleProduct)
-      );
-      setCartProducts([...cartProducts, ...selectedProduct]);
-    }
+    if (selectedProduct.length > 0) {
+      setProductQuantity(selectedProduct[0].quantity);
+    } else setProductQuantity(1);
+  }, []);
+
+  const add = () => {
+    const newValue = productQuantity + 1;
+    setProductQuantity(newValue);
+  };
+
+  const subtract = () => {
+    const newValue = productQuantity - 1;
+    setProductQuantity(newValue);
   };
 
   return (
     <div className="AddToCartContainer">
       <div className="AddToCartContainerCounter">
-        <button>
+        <button onClick={subtract} disabled={productQuantity <= 1}>
           <p>-</p>
         </button>
-        <p>1</p>
-        <button>
+        <p>{productQuantity}</p>
+        <button onClick={add}>
           <p>+</p>
         </button>
       </div>
-      <button onClick={addProductToCart}>
+      <button onClick={() => addProductToCart(titleProduct, productQuantity)}>
         <p>Add</p>
       </button>
     </div>

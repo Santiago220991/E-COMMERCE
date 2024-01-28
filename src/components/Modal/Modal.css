@@ -8,11 +8,12 @@
     height: 100%;
     padding-top: 5%;
     place-items: start center;
+    z-index: 3;
 }
 
 .ContentModalContainer {
     height: 50%;
-    width: 40%;
+    width: 50%;
     border: solid 1px #8B8B8B;
     border-radius: 10px;
     display: flex;

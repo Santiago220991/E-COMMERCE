@@ -34,7 +34,7 @@ function Modal() {
             <h3>${priceProduct}</h3>
           </div>
           <Rating stars={3} />
-          <h6>{descriptionProduct}</h6>
+          <h6>{descriptionProduct.substr(1, 180) + "..."}</h6>
           <AddToCartButton />
         </div>
       </div>

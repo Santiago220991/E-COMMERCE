@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 import { HigherToLower, LowerToHigher, ByName } from "../../utils/sorting";
-import roundRating from "../../utils/rounding"
+import roundRating from "../../utils/rounding";
 
 const SearchContext = createContext();
 
@@ -17,7 +17,9 @@ function SearchProvider({ children }) {
   const [descriptionProduct, setDescriptionProduct] = useState("");
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [rateOption, setRateOption] = useState(5);
-  const [cartProducts, setCartProducts] = useState([])
+  const [cartProducts, setCartProducts] = useState([]);
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [subtotal, setSubtotal] = useState(0);
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -32,11 +34,14 @@ function SearchProvider({ children }) {
         setProducts(productList.sort(ByName));
         setProductsInitial(productList);
         setIsLoading(false);
-      } catch (error) {
-      }
+      } catch (error) {}
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    subtotalCalculation();
+  }, [cartProducts]);
 
   const sortProducts = (sortValue) => {
     if (sortValue === "Name") {
@@ -58,6 +63,42 @@ function SearchProvider({ children }) {
       return categoryCheck && ratingCheck;
     });
     setProducts(filteredProducts);
+  };
+
+  const addProductToCart = (productCartTitle, productCartQuantity) => {
+    const alreadyExistInCart = cartProducts.filter((product) =>
+      product.title.includes(productCartTitle)
+    );
+
+    if (alreadyExistInCart.length === 0) {
+      const selectedProduct = productsInitial.filter((product) =>
+        product.title.includes(productCartTitle)
+      );
+      selectedProduct[0]["quantity"] = productCartQuantity;
+      setCartProducts([...cartProducts, ...selectedProduct]);
+    }
+    if (alreadyExistInCart.length > 0) {
+      !(alreadyExistInCart[0]["quantity"] == productCartQuantity)
+        ? setCartProducts(
+            cartProducts.map((product) => {
+              if (product.title === alreadyExistInCart[0].title) {
+                return { ...product, quantity: productCartQuantity };
+              } else {
+                return product;
+              }
+            })
+          )
+        : null;
+    }
+  };
+
+  const subtotalCalculation = () => {
+    if (cartProducts.length > 0) {
+      const subtotalValue = cartProducts.reduce((accumulator, product) => {
+        return accumulator + product.price * product.quantity;
+      }, 0);
+      setSubtotal(subtotalValue.toFixed(2));
+    }
   };
 
   const searchedProducts = products.filter((product) => {
@@ -93,7 +134,11 @@ function SearchProvider({ children }) {
         setIsCartOpen,
         cartProducts,
         setCartProducts,
-        productsInitial
+        productsInitial,
+        productQuantity,
+        setProductQuantity,
+        addProductToCart,
+        subtotal,
       }}
     >
       {children}
