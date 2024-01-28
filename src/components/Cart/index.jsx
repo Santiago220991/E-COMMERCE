@@ -1,6 +1,10 @@
 import "./Cart.css";
+import { useContext } from "react";
+import { SearchContext } from "../../contexts/SearchContext";
 
 const Cart = () => {
+  const { cartProducts } = useContext(SearchContext);
+  console.log(cartProducts)
   return (
     <div className="CartContainer">
       <div className="SubtotalContainer">
@@ -8,29 +12,26 @@ const Cart = () => {
         <p>`${2000}`</p>
         <button>Continue</button>
       </div>
-      <div className="ProductAddedContainer">
-        <div className="ProductAddedImageCloseContainer">
-          <div className="ProductAddedImageContainer">
-            <img
-              src={
-                "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg"
-              }
-              alt={"product-image"}
-            />
+      {cartProducts.map((product, index) => (
+        <div className="ProductAddedContainer" key={`product-${index}`}>
+          <div className="ProductAddedImageCloseContainer">
+            <div className="ProductAddedImageContainer">
+              <img src={product.image} alt={"product-image"} />
+            </div>
+            <button>X</button>
           </div>
-          <button>X</button>
+          <p>{`$${product.price}`}</p>
+          <div className="ProductAddedQuantityController">
+            <button>
+              <p>-</p>
+            </button>
+            <p>1</p>
+            <button>
+              <p>+</p>
+            </button>
+          </div>
         </div>
-        <p>{2000}</p>
-        <div className="ProductAddedQuantityController">
-          <button>
-            <p>-</p>
-          </button>
-          <p>1</p>
-          <button>
-            <p>+</p>
-          </button>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
