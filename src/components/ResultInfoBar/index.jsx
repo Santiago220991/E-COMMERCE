@@ -1,16 +1,20 @@
-import { ResultPreview } from './ResultPreview'
-import { SortFilter } from './SortFilter'
-import { Cart } from '../Cart'
-import './ResultInfoBar.css'
+import { ResultPreview } from "./ResultPreview";
+import { SortFilter } from "./SortFilter";
+import { Cart } from "../Cart";
+import "./ResultInfoBar.css";
+import { useContext } from "react";
+import { SearchContext } from "../../contexts/SearchContext";
 
-function ResultInfoBar () {
-    return (
-        <div className='ResultInfoBarContainer'>
-            <ResultPreview />
-            <SortFilter />
-            <Cart />
-        </div>
-    )
+function ResultInfoBar() {
+  const { isCartOpen } = useContext(SearchContext);
+
+  return (
+    <div className="ResultInfoBarContainer">
+        <ResultPreview />
+        <SortFilter />
+      {isCartOpen && <Cart />}
+    </div>
+  );
 }
 
-export { ResultInfoBar }
+export { ResultInfoBar };

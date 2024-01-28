@@ -6,6 +6,7 @@ const SearchContext = createContext();
 
 function SearchProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
@@ -87,6 +88,8 @@ function SearchProvider({ children }) {
         applyFilters,
         rateOption,
         setRateOption,
+        isCartOpen,
+        setIsCartOpen
       }}
     >
       {children}
