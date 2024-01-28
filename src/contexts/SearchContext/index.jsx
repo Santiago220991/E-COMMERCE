@@ -98,7 +98,9 @@ function SearchProvider({ children }) {
         return accumulator + product.price * product.quantity;
       }, 0);
       setSubtotal(subtotalValue.toFixed(2));
-    }
+    }else(
+      setSubtotal(0)
+    )
   };
 
   const searchedProducts = products.filter((product) => {

@@ -3,8 +3,15 @@ import { useContext } from "react";
 import { SearchContext } from "../../contexts/SearchContext";
 
 const Cart = () => {
-  const { cartProducts, addProductToCart, subtotal } =
+  const { cartProducts, setCartProducts, addProductToCart, subtotal } =
     useContext(SearchContext);
+
+  const removeCartProduct = (productTitle) => {
+    const selectedItems = cartProducts.filter(
+      (product) => product.title !== productTitle
+    );
+    setCartProducts([...selectedItems]);
+  };
 
   return (
     <div className="CartContainer">
@@ -19,7 +26,7 @@ const Cart = () => {
             <div className="ProductAddedImageContainer">
               <img src={product.image} alt={"product-image"} />
             </div>
-            <button>X</button>
+            <button onClick={() => removeCartProduct(product.title)}>X</button>
           </div>
           <p>{`$${product.price}`}</p>
           <div className="ProductAddedQuantityController">

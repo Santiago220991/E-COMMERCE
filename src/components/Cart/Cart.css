@@ -62,7 +62,8 @@
     margin: 0 20px 0;
     padding: 0;
     height: 5px;
-    color : red
+    color : red;
+    cursor: pointer;
 }
 
 .ProductAddedImageContainer {
