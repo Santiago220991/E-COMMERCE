@@ -1,5 +1,5 @@
-import "./AddToCart.css";
-const AddToCart = () => {
+import "./AddToCartButton.css";
+const AddToCartButton = () => {
   return (
     <div className="AddToCartContainer">
       <div className="AddToCartContainerCounter">
@@ -11,8 +11,10 @@ const AddToCart = () => {
           <p>+</p>
         </button>
       </div>
-      <button><p>Add</p></button>
+      <button>
+        <p>Add</p>
+      </button>
     </div>
   );
 };
-export default AddToCart;
+export { AddToCartButton };

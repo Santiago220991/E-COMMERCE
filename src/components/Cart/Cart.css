@@ -1,0 +1,98 @@
+.CartContainer{
+    width: 320px;
+    height: 100px;
+    margin-right:-35px;
+    margin-top: 75px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    z-index: 2;
+    border-left: 1px solid gray;
+}
+
+.CartContainer .SubtotalContainer {
+    border-left: solid 1px gray;
+    border-bottom: solid 1px gray;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: white solid 1px;
+}
+
+.CartContainer .SubtotalContainer p{
+    margin: 0;
+    color: red;
+}
+
+.CartContainer .SubtotalContainer button {
+    margin-bottom: 16px;
+    background-color: rgb(41, 212, 18);
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    font-size: 12px;
+    width:60px
+}
+
+.ProductAddedContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background-color: white;
+}
+
+.ProductAddedContainer p {
+    margin:0
+}
+
+.ProductAddedImageCloseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.ProductAddedImageCloseContainer button{
+    background-color: transparent;
+    border: 0;
+    margin: 0 20px 0;
+    padding: 0;
+    height: 5px;
+    color : red
+}
+
+.ProductAddedImageContainer {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height: 50px;
+}
+
+.ProductAddedImageContainer img {
+    width: 30%;
+    content: contain;
+    padding-left: 50px;
+}
+
+.ProductAddedQuantityController {
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    margin-bottom: 10px;
+}
+
+.ProductAddedQuantityController p {
+    font-size: 20px;
+    color: gray;
+    margin: 0px
+}
+
+.ProductAddedQuantityController button {
+    background-color: transparent;
+    border: 0;
+}

@@ -1,5 +1,6 @@
 import { ResultPreview } from './ResultPreview'
 import { SortFilter } from './SortFilter'
+import { Cart } from '../Cart'
 import './ResultInfoBar.css'
 
 function ResultInfoBar () {
@@ -7,6 +8,7 @@ function ResultInfoBar () {
         <div className='ResultInfoBarContainer'>
             <ResultPreview />
             <SortFilter />
+            <Cart />
         </div>
     )
 }
