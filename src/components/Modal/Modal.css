@@ -36,7 +36,8 @@
     z-index: 2;
     right: 32%;
     width: 25px;
-    height: 25px
+    height: 25px;
+    cursor: pointer;
 }
 
 .ContentModalContainer .ProductImageContainer img {
