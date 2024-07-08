@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { SearchContext } from '../../../contexts/SearchContext'
 import './Search.css'
+import loupe from '/src/assets/loupe.png';
 
 function Search () {
     const {
@@ -17,7 +18,7 @@ function Search () {
                     setSearchValue(event.target.value);
                 }}
             />
-            <img src='src/assets/loupe.png'/>
+            <img src={loupe}/>
         </div>
     )
 }
