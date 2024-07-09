@@ -1,23 +1,31 @@
-# Budget App
+# E-commerce
 
-> This app 
+> This app is and e-commerce where you can add items to the cart, sort items by different categories and see a short description of every item. I was built with React and JavaScript.
 
 <p align="center">
-<img src=""
+<img src="src/assets/Store.png"
 </p>
  
 ## Live Demo
 
-[](https:///)
+[E-commerce](https://e-commerce-project-santiago.netlify.app/)
 
 ## Built With
 
 - React, JavaScript 
 
 ## Setup Project
-- Clone repo by using (https://gt)
-- cd Budget-App
-- Install de
+Open your favourite terminal in the root and install the npm dependencies with:
+
+```npm install```
+
+Then run the following command to run the project on the local server:
+
+```npm run dev```
+
+You can also check the lint by running:
+
+```npm run lint```
 
 
 ## Author
@@ -33,4 +41,4 @@
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page]().
+Feel free to check the [issues page](https://github.com/Santiago220991/E-COMMERCE/issues).
