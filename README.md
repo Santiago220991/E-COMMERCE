@@ -1,6 +1,6 @@
 # E-commerce
 
-> This app is and e-commerce where you can add items to the cart, sort items by different categories and see a short description of every item. I was built with React and JavaScript.
+> This app is an e-commerce where you can add items to the cart, sort items by different categories and see a short description of every item. It was built with React and JavaScript.
 
 <p align="center">
 <img src="src/assets/Store.png"
